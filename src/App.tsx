@@ -1,0 +1,220 @@
+// import { useState } from 'react'
+import { useState, type JSX } from 'react'
+import './App.css'
+import { Button } from './Components/button'
+import { Card } from './Components/skillsCard'
+import { cn } from './utils/classes'
+import { ExperienceCard } from './Components/experienceCard'
+import { ExperienceModal } from './Components/experienceModal'
+import { ProjectCard } from './Components/projectCard'
+import { CertificationCard } from './Components/certificationCard'
+import { AchievementCard } from './Components/achievementCard'
+
+function App() {
+
+  interface ButtonType {
+    name: string;
+    href: string;
+    color: 'green' | 'blue';
+    hoverColor: 'green' | 'blue';
+  }
+
+  interface experienceCardType {
+    logo: JSX.Element | undefined;
+    title: string;
+    company: string;
+    keyAchievements: string[];
+    techStack: string[];
+    Live?: string;
+    GitHub?: string;
+    startDate: string;
+    endDate?: string;
+    location?: string;
+  }
+
+  interface ProjectCardType {
+    live: string;
+    GitHub: string;
+    title: string;
+    description: string;
+    techStack: string[];
+    inDevelopment?: boolean;
+  }
+
+  interface CertificationCardType {
+    title: string;
+    author: string;
+    img: string;
+    verify: string;
+    description: string;
+    date?: string;
+  }
+
+  interface AchievementCardProps {
+    title: string;
+    description: string;
+  }
+
+  interface AchievementCardProps { 
+    title: string; 
+    description: string; 
+    link?: string 
+    logo?: React.ReactNode;
+  }
+
+  const achievementCards: AchievementCardProps[] = [
+    { title: 'LeetCode', description: 'Completed 100 LeetCode problems, strengthening problem-solving skills and proficiency in data structures and algorithms, with a focus on optimizing time and space complexity.', link: 'https://leetcode.com/u/manmohanwable0', logo: <svg fill="#ffffff" width="24px" height="24px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"></path></g></svg> }
+  ]
+  const certificationCards: CertificationCardType[] = [
+    { title: 'Machine Learning Specialization', author: 'Andrew NG (Coursera)', img: 'Certifications/Machine Learning Specialization.jpg', verify: 'https://coursera.org/verify/specialization/YAEAF2OBBY41', date: 'April 2025', description: 'Completed a comprehensive series of courses covering supervised and unsupervised learning, regression, classification, neural networks, and best practices in ML model development. Gained hands-on experience implementing algorithms and building projects to solve real-world problems.' },
+    { title: 'Neural Networks and Deep Learning', author: 'Andrew NG (Coursera)', img: 'Certifications/Neural Networks and Deep Learning.jpg', verify: 'https://coursera.org/verify/K1OYFK4MEJXF', date: 'June 2025', description: 'Completed a comprehensive course on neural networks and deep learning, covering foundational concepts such as forward and backward propagation, activation functions, and optimization techniques. Gained hands-on experience building and training neural networks using popular frameworks.' },
+    { title: 'Web Development and DevOps', author: 'Harkirat Singh (100xDevs)', img: 'Certifications/100xDevs Cohort 3.png', verify: '#', date: 'September 2025', description: 'Completed an intensive web development and DevOps program, mastering full-stack development with a focus on modern technologies and best practices. Gained hands-on experience building scalable web applications, implementing CI/CD pipelines, and deploying projects using cloud services.' },
+  ]
+
+  const projectCards: ProjectCardType[] = [
+    { live: 'https://vegs.manmohan.live', GitHub: 'https://github.com/manmohan0/veg', title: 'Vegs', description: 'Veg is a lightweight, beginner-friendly platform that lets students and creators quickly build, edit, and deploy static websites without any setup hassles. Designed to make academic and project showcases effortless, Veg combines a Monaco-powered code editor, real-time live preview, and one-click deployment, so you can go from idea to a hosted website in minutes. Whether it\'s for college projects, portfolios, or quick prototypes, Veg makes web publishing fast, accessible, and fun, no heavy tools or manual deployments needed.', techStack: ['React.js', 'Express', 'Tailwind CSS'] },
+    { live: '#', GitHub: '#', title: 'Project 1', description: 'Description for project 1', techStack: ['React', 'Node'], inDevelopment: true },
+  ]
+
+  const experienceCards: experienceCardType[] = [
+    { logo: undefined, title: 'Full Stack Intern', startDate: 'August 2025', keyAchievements: ['Built scalable features with Spring Boot, Java, React, and TypeScript, ensuring robust architecture.', 'Second Line is this'], company: 'Socialys Evidentia', techStack: ['HTML', 'CSS', 'JS'], Live: '#' },
+    { logo: undefined, title: 'Another Job', startDate: 'Jan 2024', endDate: 'July 2025', keyAchievements: ['Did other things.'], company: 'Another Company', techStack: ['React', 'Node'], GitHub: '#' }
+  ]
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedExperienceIndex, setSelectedExperienceIndex] = useState(0);
+
+  const openModal = (index: number) => {
+    setSelectedExperienceIndex(index);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const Buttons: ButtonType[] = [
+    { name: 'Resume', href: 'https://drive.google.com/file/d/1NGx0odXt9hiSot_nAI0pbHD3C5xgKeEf/view?usp=sharing', color: 'green', hoverColor: 'green' },
+    { name: 'Projects', href: '#projects', color: 'blue', hoverColor: 'blue' },
+  ]
+
+  interface Skill {
+    logo: JSX.Element;
+    content: string[];
+  }
+
+  const skillContent: Record<string, Skill> = {
+    "Programming Languages": { content: ['JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'C'], logo: <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14.1809 4.2755C14.581 4.3827 14.8185 4.79396 14.7113 5.19406L10.7377 20.0238C10.6304 20.4239 10.2192 20.6613 9.81909 20.5541C9.41899 20.4469 9.18156 20.0356 9.28876 19.6355L13.2624 4.80583C13.3696 4.40573 13.7808 4.16829 14.1809 4.2755Z" fill="currentColor"></path> <path d="M16.4425 7.32781C16.7196 7.01993 17.1938 6.99497 17.5017 7.27206L19.2392 8.8358C19.9756 9.49847 20.5864 10.0482 21.0058 10.5467C21.4468 11.071 21.7603 11.6342 21.7603 12.3295C21.7603 13.0248 21.4468 13.5881 21.0058 14.1123C20.5864 14.6109 19.9756 15.1606 19.2392 15.8233L17.5017 17.387C17.1938 17.6641 16.7196 17.6391 16.4425 17.3313C16.1654 17.0234 16.1904 16.5492 16.4983 16.2721L18.1947 14.7452C18.9826 14.0362 19.5138 13.5558 19.8579 13.1467C20.1882 12.7541 20.2603 12.525 20.2603 12.3295C20.2603 12.1341 20.1882 11.9049 19.8579 11.5123C19.5138 11.1033 18.9826 10.6229 18.1947 9.91383L16.4983 8.387C16.1904 8.10991 16.1654 7.63569 16.4425 7.32781Z" fill="currentColor"></path> <path d="M7.50178 8.387C7.80966 8.10991 7.83462 7.63569 7.55752 7.32781C7.28043 7.01993 6.80621 6.99497 6.49833 7.27206L4.76084 8.8358C4.0245 9.49847 3.41369 10.0482 2.99428 10.5467C2.55325 11.071 2.23975 11.6342 2.23975 12.3295C2.23975 13.0248 2.55325 13.5881 2.99428 14.1123C3.41369 14.6109 4.02449 15.1606 4.76082 15.8232L6.49833 17.387C6.80621 17.6641 7.28043 17.6391 7.55752 17.3313C7.83462 17.0234 7.80966 16.5492 7.50178 16.2721L5.80531 14.7452C5.01743 14.0362 4.48623 13.5558 4.14213 13.1467C3.81188 12.7541 3.73975 12.525 3.73975 12.3295C3.73975 12.1341 3.81188 11.9049 4.14213 11.5123C4.48623 11.1033 5.01743 10.6229 5.80531 9.91383L7.50178 8.387Z" fill="currentColor"></path> </g></svg> },
+    "Frontend": { content: ['HTML', 'CSS', 'React.js', 'Next.js', 'Tailwind CSS', 'Bootstrap', 'Material UI', 'ShadCN'], logo: <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#487ffe"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path stroke="#487ffe" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 17L3 11l13-6 13 6-13 6z"></path> <path stroke="#487ffe" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 15.5l13 6 13-6"></path> <path stroke="#487ffe" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 20l13 6 13-6"></path> </g></svg> },
+    "Backend": { content: ['Node.js', 'Express.js', 'WebSockets', 'JWT', 'Socket.io', 'WebRTC'], logo: <svg fill="#b827fc" viewBox="0 0 32.00 32.00" id="icon" xmlns="http://www.w3.org/2000/svg" stroke="#b827fc" strokeWidth="0.00032"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><defs><style>{'.cls-1{fill:none;}'}</style></defs><title>datastore</title><circle cx="23" cy="23" r="1"></circle><rect x="8" y="22" width="12" height="2"></rect><circle cx="23" cy="9" r="1"></circle><rect x="8" y="8" width="12" height="2"></rect><path d="M26,14a2,2,0,0,0,2-2V6a2,2,0,0,0-2-2H6A2,2,0,0,0,4,6v6a2,2,0,0,0,2,2H8v4H6a2,2,0,0,0-2,2v6a2,2,0,0,0,2,2H26a2,2,0,0,0,2-2V20a2,2,0,0,0-2-2H24V14ZM6,6H26v6H6ZM26,26H6V20H26Zm-4-8H10V14H22Z"></path><rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" className="cls-1" width="32" height="32"></rect></g></svg> },
+    "Databases": { content: ['MySQL', 'PostgreSQL', 'MongoDB', 'Redis', 'RabbitMQ', 'Prisma'], logo: <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#73ff4d"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21 5C21 6.65685 16.9706 8 12 8C7.02944 8 3 6.65685 3 5M21 5C21 3.34315 16.9706 2 12 2C7.02944 2 3 3.34315 3 5M21 5V19C21 20.66 17 22 12 22C7 22 3 20.66 3 19V5M21 9.72021C21 11.3802 17 12.7202 12 12.7202C7 12.7202 3 11.3802 3 9.72021M21 14.44C21 16.1 17 17.44 12 17.44C7 17.44 3 16.1 3 14.44" stroke="#73ff4d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg> },
+    "Cloud & DevOps": { content: ['AWS', 'Docker', 'Kubernetes', 'Git', 'CI/CD', 'Serverless'], logo: <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ff2ee3"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14 12.5039V11.5C14 10.3954 13.1046 9.5 12 9.5C10.8954 9.5 10 10.3954 10 11.5V12.5039M10.5 15.5H13.5C13.9659 15.5 14.1989 15.5 14.3827 15.4239C14.6277 15.3224 14.8224 15.1277 14.9239 14.8827C15 14.6989 15 14.4659 15 14C15 13.5341 15 13.3011 14.9239 13.1173C14.8224 12.8723 14.6277 12.6776 14.3827 12.5761C14.1989 12.5 13.9659 12.5 13.5 12.5H10.5C10.0341 12.5 9.80109 12.5 9.61732 12.5761C9.37229 12.6776 9.17761 12.8723 9.07612 13.1173C9 13.3011 9 13.5341 9 14C9 14.4659 9 14.6989 9.07612 14.8827C9.17761 15.1277 9.37229 15.3224 9.61732 15.4239C9.80109 15.5 10.0341 15.5 10.5 15.5ZM8.4 19C5.41766 19 3 16.6044 3 13.6493C3 11.2001 4.8 8.9375 7.5 8.5C8.34694 6.48637 10.3514 5 12.6893 5C15.684 5 18.1317 7.32251 18.3 10.25C19.8893 10.9449 21 12.6503 21 14.4969C21 16.9839 18.9853 19 16.5 19L8.4 19Z" stroke="#ff2ee3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg> },
+    "Tools & Platforms": { content: ['VS Code', 'Postman', 'Figma', 'MongoDB Atlas', 'Render', 'Netlify', 'Vercel'], logo: <svg viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" fill="#ffe642" stroke="#ffe642"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>tools</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd"> <g id="Icon-Set" transform="translate(-569.000000, -308.000000)" fill="#ffe642"> <path d="M594.884,322.281 C592.585,324.575 589.129,324.958 586.406,323.494 L574.556,335.322 C573.754,336.122 572.454,336.122 571.651,335.322 C570.85,334.521 570.85,333.225 571.651,332.424 L583.503,320.596 C582.038,317.88 582.422,314.433 584.72,312.139 C586.098,310.764 587.896,310.11 589.701,310.088 C587.81,312.096 587.835,315.248 589.802,317.211 C591.768,319.173 594.926,319.198 596.938,317.311 C596.916,319.112 596.262,320.906 594.884,322.281 L594.884,322.281 Z M598.159,313.37 C597.653,313.938 596.813,314.661 595.609,315.762 C594.334,317.034 592.529,317.034 591.254,315.762 C589.978,314.488 589.978,312.688 591.254,311.415 C592.429,310.242 593.692,308.853 593.672,308.847 C590.257,307.274 586.082,307.882 583.268,310.69 C580.703,313.249 579.972,316.935 581.051,320.146 L570.2,330.976 C568.596,332.576 568.596,335.171 570.2,336.771 C571.804,338.371 574.404,338.371 576.008,336.771 L586.858,325.942 C590.078,327.021 593.771,326.289 596.336,323.73 C599.146,320.925 599.73,316.775 598.159,313.37 L598.159,313.37 Z" id="tools"> </path> </g> </g> </g></svg> },
+    "Other Skills": { content: ['RESTful APIs', 'GraphQL', 'Microservices', 'Agile Methodologies'], logo: <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#007bff"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Interface / Link"> <path id="Vector" d="M9.1718 14.8288L14.8287 9.17192M7.05086 11.293L5.63664 12.7072C4.07455 14.2693 4.07409 16.8022 5.63619 18.3643C7.19829 19.9264 9.7317 19.9259 11.2938 18.3638L12.7065 16.9498M11.2929 7.05L12.7071 5.63579C14.2692 4.07369 16.8016 4.07397 18.3637 5.63607C19.9258 7.19816 19.9257 9.73085 18.3636 11.2929L16.9501 12.7071" stroke="#007bff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g> </g></svg> }
+  }
+  
+  return (
+    <>
+      <div className={cn("max-w-3xl my-20 mx-auto min-h-screen flex flex-col justify-center space-y-10 px-4",
+        "lg:flex-col",
+        { "filter blur-md transition-filter duration-300": isModalOpen }
+      )}>
+        <div id='Introduction' className={cn('flex flex-col justify-center items-center space-y-2',
+          'lg:flex-row'
+        )}>
+          <img src="Me.png" className={cn(
+            'w-[150px] h-[150px] rounded-2xl',
+            'shadow-[0_0_10px_rgba(200,200,200,1)]'
+          )} alt="Profile pic" />
+          <div className='ml-10 text-white'>
+            <div>
+              <h1 className={cn(
+                'TextGradient',
+                "text-sm"
+              )}>Hello,<br/> I'm Manmohan Wable</h1>
+              <p className='mt-4 text-lg text-gray-300 text-wrap'>A Software Engineer passionate about backend development, AI, and building scalable web apps. I enjoy turning complex problems into simple, impactful solutions.</p>
+            </div>
+            <div className='flex lg:flex-row mt-6 space-x-4'>
+              {Buttons.map((button) => (
+                <Button key={button.name} href={button.href} color={button.color} hoverColor={button.hoverColor}>
+                  {button.name}
+                </Button>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div id='Skills' className='text-white'>
+          <span className='text-3xl font-bold mb-4 TextGradient'>
+            Skills
+          </span>
+          <div className={cn(
+            "grid grid-cols-1 gap-4 mt-4",
+            "lg:grid-cols-2"
+          )}>
+            {Object.keys(skillContent).map((skill) => (
+              <Card key={skill} Logo={skillContent[skill].logo} Name={skill} LogoColor={'blue'} content={skillContent[skill].content} />
+            ))}
+          </div>
+        </div>
+        <div id="Experience" className='flex flex-col space-y-2 text-white'>
+            <span className='TextGradient'>
+              Experience
+            </span>
+            <span className='text-base text-gray-500/90'>
+              Here's a timeline of my professional journey, showcasing my roles and contributions in full-stack development.
+            </span>
+            <div className='flex flex-col space-y-4 mt-4'>
+              {experienceCards.map((card, index) => (
+                <ExperienceCard description={card.keyAchievements[0]} key={index} {...card} onCardClick={() => openModal(index)} />
+              ))}
+            </div>
+        </div>
+        <div id="projects" className='flex flex-col space-y-2 text-white'>
+          <span className='TextGradient'>
+            Projects
+          </span>
+          <span className='text-base text-gray-500/90'>
+            A selection of my recent work, demonstrating my skills in full-stack development and my passion for creating impactful applications.
+          </span>
+          <div className={cn(
+            'grid grid-cols-1 mt-4',
+            'lg:grid-cols-2',
+          )}>
+            {projectCards.map((project, index) => (
+              <div key={index} className='p-2'>
+                <ProjectCard {...project} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <span className='TextGradient'>
+            Certifications
+          </span>
+          <div className='flex flex-col space-y-2 mt-4 text-white'>
+            {certificationCards.map((certification, index) => (
+              <div key={index} className='p-2'>
+                <CertificationCard {...certification} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <span className='TextGradient'>
+            Extra-Curricular / Achievments
+          </span>
+          <div className='flex flex-col space-y-2 mt-4 text-white'>
+            {achievementCards.map((achievement, index) => (
+              // <div key={index}>
+                <AchievementCard key={index} {...achievement}/>
+              // </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <ExperienceModal isOpen={isModalOpen} onClose={closeModal} experience={experienceCards[selectedExperienceIndex]} />
+    </>
+  )
+}
+
+export default App

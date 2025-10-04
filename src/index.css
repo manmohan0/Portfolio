@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+.TextGradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-2xl font-bold lg:text-4xl
+}
+
+/* .LogoGradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-sm font-bold lg:text-4xl 
+} */
