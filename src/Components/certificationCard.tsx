@@ -24,23 +24,21 @@ export const CertificationCard = ({ title, author, img, verify, date, descriptio
             "transition-all duration-300 "
         )}></div>
         <div className={cn("flex items-center justify-between z-0")}>
-            <div>
-                <span className={cn("flex flex-col space-y-1.5 gap-2 text-xl font-semibold",
-                    "lg:flex-row lg:items-center lg:space-y-0"
-                )}>
-                    <span className="text-white">
-                        {title}
-                    </span>
-                    <span className={cn("text-gray-400 hidden",
-                        "lg:block"
-                    )}>
-                        -
-                    </span>
-                    <span className="text-lg text-gray-400">
-                        {author}
-                    </span>
+            <span className={cn("flex flex-col space-y-1.5 gap-2 text-xl font-semibold",
+                "lg:flex-row lg:items-center lg:space-y-0"
+            )}>
+                <span className="text-white">
+                    {title}
                 </span>
-            </div>
+                <span className={cn("text-gray-400 hidden",
+                    "lg:block"
+                )}>
+                    -
+                </span>
+                <span className="text-lg text-gray-400">
+                    {author}
+                </span>
+            </span>
             <Ongoing completed={date ? true : false}>
                 {date ? date : "Ongoing"}
             </Ongoing>

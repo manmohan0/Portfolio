@@ -1,6 +1,5 @@
-// import { useState } from 'react'
-import { useState, type JSX } from 'react'
 import './App.css'
+import { useState, type JSX } from 'react'
 import { Button } from './Components/button'
 import { Card } from './Components/skillsCard'
 import { cn } from './utils/classes'
@@ -9,6 +8,7 @@ import { ExperienceModal } from './Components/experienceModal'
 import { ProjectCard } from './Components/projectCard'
 import { CertificationCard } from './Components/certificationCard'
 import { AchievementCard } from './Components/achievementCard'
+import { SocialMedia } from './Components/SocialMedia'
 
 function App() {
 
@@ -65,6 +65,7 @@ function App() {
   const achievementCards: AchievementCardProps[] = [
     { title: 'LeetCode', description: 'Completed 100 LeetCode problems, strengthening problem-solving skills and proficiency in data structures and algorithms, with a focus on optimizing time and space complexity.', link: 'https://leetcode.com/u/manmohanwable0', logo: <svg fill="#ffffff" width="24px" height="24px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"></path></g></svg> }
   ]
+
   const certificationCards: CertificationCardType[] = [
     { title: 'Machine Learning Specialization', author: 'Andrew NG (Coursera)', img: 'Certifications/Machine Learning Specialization.jpg', verify: 'https://coursera.org/verify/specialization/YAEAF2OBBY41', date: 'April 2025', description: 'Completed a comprehensive series of courses covering supervised and unsupervised learning, regression, classification, neural networks, and best practices in ML model development. Gained hands-on experience implementing algorithms and building projects to solve real-world problems.' },
     { title: 'Neural Networks and Deep Learning', author: 'Andrew NG (Coursera)', img: 'Certifications/Neural Networks and Deep Learning.jpg', verify: 'https://coursera.org/verify/K1OYFK4MEJXF', date: 'June 2025', description: 'Completed a comprehensive course on neural networks and deep learning, covering foundational concepts such as forward and backward propagation, activation functions, and optimization techniques. Gained hands-on experience building and training neural networks using popular frameworks.' },
@@ -122,10 +123,13 @@ function App() {
         <div id='Introduction' className={cn('flex flex-col justify-center items-center space-y-2',
           'lg:flex-row'
         )}>
-          <img src="Me.png" className={cn(
-            'w-[150px] h-[150px] rounded-2xl',
-            'shadow-[0_0_10px_rgba(200,200,200,1)]'
-          )} alt="Profile pic" />
+          <div className='flex flex-col w-full items-center justify-between space-y-10 h-full'>
+            <img src="Me.png" className={cn(
+              'w-[150px] h-[150px] rounded-2xl',
+              'shadow-[0_0_10px_rgba(200,200,200,1)]'
+            )} alt="Profile pic" />
+            <SocialMedia logoSize={'36px'}/>
+          </div>
           <div className='ml-10 text-white'>
             <div>
               <h1 className={cn(
@@ -149,7 +153,7 @@ function App() {
           </span>
           <div className={cn(
             "grid grid-cols-1 gap-4 mt-4",
-            "lg:grid-cols-2"
+            "md:grid-cols-2"
           )}>
             {Object.keys(skillContent).map((skill) => (
               <Card key={skill} Logo={skillContent[skill].logo} Name={skill} LogoColor={'blue'} content={skillContent[skill].content} />
@@ -205,11 +209,17 @@ function App() {
           </span>
           <div className='flex flex-col space-y-2 mt-4 text-white'>
             {achievementCards.map((achievement, index) => (
-              // <div key={index}>
                 <AchievementCard key={index} {...achievement}/>
-              // </div>
             ))}
           </div>
+        </div>
+        <div id='footer' className='flex justify-between items-center mt-10'>
+          <span className='text-sm text-gray-500/90'>
+            © 2025 Manmohan Wable.
+          </span>
+          <span>
+            <SocialMedia logoSize={'26px'}/>
+          </span>
         </div>
       </div>
       <ExperienceModal isOpen={isModalOpen} onClose={closeModal} experience={experienceCards[selectedExperienceIndex]} />
