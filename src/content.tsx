@@ -11,8 +11,12 @@ export const certificationCards: CertificationCardProps[] = [
 ]
 
 export const projectCards: ProjectCardProps[] = [
-    { live: 'https://vegs.manmohan.live', GitHub: 'https://github.com/manmohan0/veg', title: 'Vegs', description: 'Veg is a lightweight, beginner-friendly platform that lets students and creators quickly build, edit, and deploy static websites without any setup hassles. Designed to make academic and project showcases effortless, Veg combines a Monaco-powered code editor, real-time live preview, and one-click deployment, so you can go from idea to a hosted website in minutes. Whether it\'s for college projects, portfolios, or quick prototypes, Veg makes web publishing fast, accessible, and fun, no heavy tools or manual deployments needed.', techStack: ['React.js', 'Express', 'Tailwind CSS'] },
-    { live: '#', GitHub: '#', title: 'Project 1', description: 'Description for project 1', techStack: ['React', 'Node'], inDevelopment: true },
+    { live: 'https://cryptopulse.manmohan.live', GitHub: 'https://github.com/manmohan0/CryptoPulse', title: 'CryptoPulse', description: 'A cryptocurrency tracking application.', techStack: ['TypeScript'] },
+    { live: 'https://pollbattle.manmohan.live', GitHub: 'https://github.com/manmohan0/Poll-Battle', title: 'Poll-Battle', description: 'A real-time polling application.', techStack: ['TypeScript'] },
+    { live: 'https://realtime-chat-app.manmohan.live', GitHub: 'https://github.com/manmohan0/Realtime-Chat-App', title: 'Realtime-Chat-App', description: 'A real-time chat application.', techStack: ['TypeScript'] },
+    { live: 'https://vegs.manmohan.live', GitHub: 'https://github.com/manmohan0/Veg', title: 'Veg', description: 'Veg is a lightweight, beginner-friendly platform that lets students and creators quickly build, edit, and deploy static websites without any setup hassles. Designed to make academic and project showcases effortless, Veg combines a Monaco-powered code editor, real-time live preview, and one-click deployment, so you can go from idea to a hosted website in minutes. Whether it\'s for college projects, portfolios, or quick prototypes, Veg makes web publishing fast, accessible, and fun, no heavy tools or manual deployments needed.', techStack: ['TypeScript'] },
+    { live: '#', GitHub: 'https://github.com/manmohan0/Swift-Shoppers-Customer', title: 'Swift-Shoppers-Customer', description: 'Customer-facing application for Swift Shoppers.', techStack: ['TypeScript'], inDevelopment: true },
+    { live: '#', GitHub: 'https://github.com/manmohan0/Swift-Shoppers-Merchant', title: 'Swift-Shoppers-Merchant', description: 'Merchant-facing application for Swift Shoppers.', techStack: ['TypeScript'], inDevelopment: true },
 ]
 
 export const experienceCards: ExperienceCardData[] = [
