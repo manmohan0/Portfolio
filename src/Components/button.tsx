@@ -9,14 +9,14 @@ export const Button = ({ href, className, color, hoverColor, shadowColor, childr
     };
 
     const hoverColorVariants = {
-        green: 'hover:bg-green-700',
-        blue: 'hover:bg-blue-700',
+        green: 'hover:bg-green-600',
+        blue: 'hover:bg-blue-600',
     };
 
     const shadowVariants = {
-        green: 'hover:shadow-green-500/50',
-        blue: 'hover:shadow-blue-500/50',
+        green: 'hover:shadow-[0_0_35px_#10b981E0]',
+        blue: 'hover:shadow-[0_0_35px_#3b82f6E0]',
     };
 
-    return <a href={href} id={children as string} className={cn(`px-4 py-2 rounded transition`, colorVariants[color], hoverColorVariants[hoverColor], shadowVariants[shadowColor], className ?? "")}>{children}</a>
+    return <a href={href} id={children as string} className={cn(`px-4 py-2 rounded transition text-white`, colorVariants[color], hoverColorVariants[hoverColor], shadowVariants[shadowColor], className ?? "")}>{children}</a>
 }

@@ -27,10 +27,10 @@ export interface CertificationCardProps {
 
 export interface ExperienceCardProps {
     id: string;
-    logo: ReactNode;
+    logo?: ReactNode;
     title: string;
     company: string;
-    description: string;
+    keyAchievements?: string[];
     techStack: string[];
     Live?: string;
     GitHub?: string;
@@ -38,6 +38,15 @@ export interface ExperienceCardProps {
     endDate?: string;
     location?: string;
     onCardClick: () => void;
+    description?: string;
+}
+
+export interface ButtonType {
+    name: string;
+    href: string;
+    color: 'green' | 'blue';
+    hoverColor: 'green' | 'blue';
+    shadowColor: 'green' | 'blue';
 }
 
 export interface Experience {
@@ -50,11 +59,24 @@ export interface Experience {
     location?: string;
 }
 
+export interface ExperienceCardData {
+    logo?: ReactNode;
+    title: string;
+    company: string;
+    keyAchievements: string[];
+    techStack: string[];
+    Live?: string;
+    GitHub?: string;
+    startDate: string;
+    endDate?: string;
+    location?: string;
+}
+
 export interface ExperienceModalProps {
     id: string;
     isOpen: boolean;
     onClose: () => void;
-    experience: Experience;
+    experience: ExperienceCardData;
 }
 
 export interface LogoProps {
@@ -74,6 +96,11 @@ export interface ProjectCardProps {
     techStack: string[];
     inDevelopment?: boolean;
     gradient?: string;
+}
+
+export interface Skill {
+    content: string[];
+    logo: ReactNode;
 }
 
 export interface SkillCardProps {

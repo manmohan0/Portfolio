@@ -67,7 +67,7 @@ function App() {
 
   useEffect(() => {
     animateSequences()
-  }, [])
+  })
 
   return (
     <>
@@ -79,7 +79,7 @@ function App() {
           'lg:flex-row'
         )}>
           <div className='flex flex-col w-full items-center justify-between space-y-10 h-full'>
-            <motion.img src="Me.png" className={cn(
+            <motion.img src="Me.webp" className={cn(
               'w-[150px] h-[150px] rounded-2xl',
               'shadow-[0_0_10px_rgba(200,200,200,1)]'
             )} alt="Profile pic" 
@@ -147,7 +147,7 @@ function App() {
               filter: 'blur(4px)',
             }} id='Buttons' className='flex lg:flex-row mt-6 space-x-4'>
               {Buttons.map((button) => (
-                <Button key={button.name} href={button.href} color={button.color} hoverColor={button.hoverColor}>
+                <Button key={button.name} href={button.href} color={button.color} hoverColor={button.hoverColor} shadowColor={button.shadowColor} >
                   {button.name}
                 </Button>
               ))}
