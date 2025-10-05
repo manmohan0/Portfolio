@@ -1,6 +1,7 @@
 import { InstagramLogo, LinkedInLogo, GitHubLogo, XLogo, MailLogo } from "./logos"
+import type { SocialMediaProps } from "../types";
 
-export const SocialMedia = ({ logoSize } : { logoSize : string}) => {
+export const SocialMedia = ({ logoSize } : SocialMediaProps) => {
     return (
         <div className='flex align-middle items-center space-x-4'>
             <a href="https://www.instagram.com/manmohan_wable_0/">

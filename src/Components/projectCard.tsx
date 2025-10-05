@@ -1,24 +1,16 @@
 import { cn } from "../utils/classes";
 import { Ongoing } from "./ongoing";
 import { TechStackBox } from "./techStackBox";
+import type { ProjectCardProps } from "../types";
 
-interface projectCardProps {
-    live: string;
-    GitHub: string;
-    title: string;
-    description: string;
-    techStack: string[];
-    inDevelopment?: boolean;
-    gradient?: string;
-}
-export const ProjectCard = ({ live, GitHub, title, description, techStack, inDevelopment = false }: projectCardProps) => {
+export const ProjectCard = ({ live, GitHub, title, description, techStack, inDevelopment = false }: ProjectCardProps) => {
     return (
         <div onClick={() => { window.open(live, '_blank') }} className="relative h-full group">
-                <div className={cn("group absolute inset-0 w-full h-full opacity-0 rounded-lg z-10",
-                    "bg-gradient-to-r from-red-500/20 via-pink-500/20 to-purple-500/20 group-hover:opacity-",
-                    "group-hover:scale-[1.025] group-hover:cursor-pointer",
-                    "transition-all duration-300 "
-                )}></div>
+            <div className={cn("group absolute inset-0 w-full h-full opacity-0 rounded-lg z-10",
+                "bg-gradient-to-r from-red-500/10 via-pink-500/10 to-purple-500/10 group-hover:opacity-100",
+                "group-hover:scale-[1.025] group-hover:cursor-pointer",
+                "transition-all duration-300 "
+            )}></div>
             <div className={cn(
                 "group border border-gray-700 bg-gray-800/50 rounded-lg p-6 flex flex-col justify-between h-full z-0",
                 `group-hover:border-gray-500 group-hover:scale-[1.025]`,

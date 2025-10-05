@@ -1,6 +1,7 @@
 import { cn } from "../utils/classes";
+import type { TechStackBoxProps } from "../types";
 
-export const TechStackBox = ({ children }: { children: React.ReactNode }) => {
+export const TechStackBox = ({ children }: TechStackBoxProps) => {
   return (
     <span
       className={cn(

@@ -1,15 +1,7 @@
 import { cn } from "../utils/classes";
+import type { ButtonProps } from "../types";
 
-interface ButtonProps {
-    
-    href: string;
-    className?: string;
-    children: React.ReactNode; 
-    color: 'green' | 'blue';
-    hoverColor: 'green' | 'blue';
-}
-
-export const Button = ({ href, className, color, hoverColor, children } : ButtonProps) => {
+export const Button = ({ href, className, color, hoverColor, shadowColor, children } : ButtonProps) => {
 
     const colorVariants = {
         green: 'bg-green-600',
@@ -21,5 +13,10 @@ export const Button = ({ href, className, color, hoverColor, children } : Button
         blue: 'hover:bg-blue-700',
     };
 
-    return <a href={href} id={children as string} className={cn(`px-4 py-2 rounded transition`, colorVariants[color], hoverColorVariants[hoverColor], className ?? "")}>{children}</a>
+    const shadowVariants = {
+        green: 'hover:shadow-green-500/50',
+        blue: 'hover:shadow-blue-500/50',
+    };
+
+    return <a href={href} id={children as string} className={cn(`px-4 py-2 rounded transition`, colorVariants[color], hoverColorVariants[hoverColor], shadowVariants[shadowColor], className ?? "")}>{children}</a>
 }

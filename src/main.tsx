@@ -8,8 +8,8 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <div className={cn(
       "fixed bg-black inset-0 -z-10 w-full", 
-      "bg-[linear-gradient(to_right,#73737340_2px,transparent_1px),linear-gradient(to_bottom,#73737340_2px,transparent_1px)] bg-[size:20px_20px] lg:bg-[size:40px_40px]"
-      )}/>
+      "bg-[linear-gradient(to_right,#73737340_2px,transparent_1px),linear-gradient(to_bottom,#73737340_2px,transparent_1px)] bg-[size:20px_20px] lg:bg-[size:40px_40px]"  
+    )}/>
     <App />
   </StrictMode>,
 )

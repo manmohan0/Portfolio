@@ -1,7 +1,4 @@
-interface OngoingProps {
-  children: React.ReactNode;
-  completed?: boolean;
-}
+import type { OngoingProps } from "../types";
 
 export const Ongoing = ({ children, completed } : OngoingProps) => {
     return (
