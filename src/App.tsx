@@ -82,7 +82,7 @@ function App() {
             <motion.img src="Me.webp" className={cn(
               'w-[150px] h-[150px] rounded-2xl',
               'shadow-[0_0_10px_rgba(200,200,200,1)]'
-            )} alt="Profile pic" 
+            )} alt="Profile pic" rel="preload" loading="eager" decoding="async"
             initial={{
               opacity: 0,
               scale: 0.5,

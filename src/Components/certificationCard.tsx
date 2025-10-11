@@ -43,7 +43,7 @@ export const CertificationCard = ({ title, author, img, verify, date, descriptio
             </span>
             <div className="relative group/image ">
                 <a href={verify} target="_blank">
-                    <img src={img} alt={title} className={cn(
+                    <img src={img} alt={title} loading="lazy" className={cn(
                         "w-2xl transition-all duration-300", 
                         "group-hover/image:brightness-50 group-hover/image:scale-110",
                         "rounded-lg shadow-lg"
