@@ -24,7 +24,7 @@ export const experienceCards: ExperienceCardData[] = [
 ]
 
 export const Buttons: ButtonType[] = [
-    { name: 'Resume', href: 'https://drive.google.com/file/d/1NGx0odXt9hiSot_nAI0pbHD3C5xgKeEf/view?usp=sharing', color: 'green', hoverColor: 'green', shadowColor: 'green' },
+    { name: 'Resume', href: 'https://drive.google.com/file/d/1-njq_3N_1LKbxsok12qUiVJ_zw-0siaV/view?usp=drivesdk', color: 'green', hoverColor: 'green', shadowColor: 'green' },
     { name: 'Projects', href: '#projects', color: 'blue', hoverColor: 'blue', shadowColor: 'blue' },
 ]
 
