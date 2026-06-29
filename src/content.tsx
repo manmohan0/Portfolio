@@ -19,7 +19,22 @@ export const projectCards: ProjectCardProps[] = [
 ]
 
 export const experienceCards: ExperienceCardData[] = [
-    { logo: undefined, title: 'Full Stack Intern', startDate: 'August 2025', keyAchievements: ['Built scalable features with Spring Boot, Java, React, and TypeScript, ensuring robust architecture.', 'Second Line is this'], company: 'Socialys Evidentia', techStack: ['HTML', 'CSS', 'JS'], Live: '#' }
+    {
+        logo: undefined,
+        title: 'Backend Developer Intern (Sole Backend Developer)',
+        startDate: 'August 2025',
+        endDate: 'Present',
+        location: 'Remote',
+        company: 'Socialys Evidentia',
+        keyAchievements: [
+            'Solely architected and developed RESTful APIs for the company’s MVP platform using Node.js, Express, and Prisma.',
+            'Architected scalable REST APIs using Node.js, Express, and Prisma to power core product features.',
+            'Integrated authentication and email notification services, and containerised the application using Docker for seamless deployment.',
+            'Collaborating directly with the founding team to prioritise features and ship a production ready MVP backend.'
+        ],
+        techStack: ['Node.js', 'Express.js', 'Prisma', 'Docker'],
+        Live: '#'
+    }
 ]
 
 export const Buttons: ButtonType[] = [
